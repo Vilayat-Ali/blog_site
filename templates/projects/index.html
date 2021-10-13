@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'util/header.html' %}
+    <title>{{title}}</title>
+</head>
+<body>
+    {% block content%}
+    {% include 'projects/projectNav.html' %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>Projects</h2>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li>Projects</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+    
+        <!-- BLOG CARDS -->
+        <div class="row mx-auto"style="padding: 0.5rem">
+        {% for project in projects %}
+        <div class="card" style="width: 25rem; margin: 10px 10px;">
+          <img class="card-img-top img-responsive" src="{{project.pic.url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title text-center font-weight-bold">{{project.title}}</h5>
+            <p class="card-text">{{project.description}}</p><br/>
+            <div class="d-flex flex-row">
+            {% if project.github%}
+            <p class="d-flex p-2"><a href="{{project.github}}"><i class='bx bxl-github' style="font-size: 45px"></i></a></p>
+            {% else %}
+            <p></p>
+            {% endif %}
+            {% if project.webapp %}
+            <p class="d-flex p-2"><a href="{{project.webapp}}"><i class='bx bx-laptop' style="font-size: 45px"></i></a></p>
+            {% else %}
+            <p></p>
+            {% endif %}
+          </div>
+            <a href="/projects/{{project.title}}/" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <!-- BLOG CARD -->
+        {%endfor%}
+      </main><!-- End #main -->
+      {% include 'util/footer.html' %}
+      {% endblock %}
+      {% include 'util/scripts.html' %}
+</body>
+</html>

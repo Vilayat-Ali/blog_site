@@ -1,0 +1,26 @@
+{% load static %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static './css/index.css' %}">
+
+<!-- SEO -->
+<meta name="description" 
+content="{{description}}" 
+/>
+
+<meta name="keywords"
+content="{{keywords}}"
+/>
+
+<!-- Vendor files -->
+<link href="{% static '/vendor/aos/aos.css'%}" loading="lazy" rel="stylesheet">
+<link href="{% static '/vendor/bootstrap-icons/bootstrap-icons.css'%}" loading="lazy" rel="stylesheet">
+<link href="{% static '/vendor/boxicons/css/boxicons.min.css'%}" loading="lazy" rel="stylesheet">
+<link href="{% static '/vendor/glightbox/css/glightbox.min.css'%}" loading="lazy" rel="stylesheet">
+<link href="{% static '/vendor/swiper/swiper-bundle.min.css'%}" loading="lazy" rel="stylesheet">
+
+<!-- Adding favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="{% static './img/apple-touch-icon.png'%}">
+ <link rel="shortcut icon" type="image/png" href="{% static './img/favicon.ico' %}"/>

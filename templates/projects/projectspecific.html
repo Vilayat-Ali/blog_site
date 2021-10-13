@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'util/header.html' %}
+    <title>Blog | {{project.title}}</title>
+    <link rel="stylesheet" href="{% static './css/blogpage.css' %}">
+</head>
+<body>
+    {% block content%}
+    {% include 'blog/blogNav.html' %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>Projects</h2>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Projects/">Project</a></li>
+                <li>{{project.title}}</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- Main wrapper -->
+        <div class="main-wrapper" style="margin-left:0!important">
+	    
+            <article class="blog-post px-3 py-5 p-md-5">
+                <div class="container single-col-max-width">
+                    <header class="blog-post-header">
+                        <h2 class="title mb-2 text-center">{{project.title}}</h2>
+                    </header>
+                    
+                    <div class="blog-post-body">
+                        <figure class="blog-banner">
+                            <a><img class="img-fluid" src="{{project.pic.url}}" alt="image"></a>
+                            <figcaption class="mt-2 text-center image-caption">{{project.title}}</figcaption>
+                        </figure>
+                        <div class="d-flex flex-row">
+                          <p>Links:</p>
+                          {% if project.github%}
+                          <p class="d-flex p-2"><a href="{{project.github}}"><i class='bx bxl-github' style="font-size: 45px; color: #149ddd!important"></i></a></p>
+                          {% else %}
+                          <p></p>
+                          {% endif %}
+                          {% if project.webapp %}
+                          <p class="d-flex p-2"><a href="{{project.webapp}}"><i class='bx bx-laptop' style="font-size: 45px; color: #149ddd!important"></i></a></p>
+                          {% else %}
+                          <p></p>
+                          {% endif %}
+                        </div>
+                        <p style="margin-top: 2rem">{{project.description|linebreaks}}</p>
+        
+        </div><!--//main-wrapper-->
+        <!-- End of main wrapper -->
+
+      </main><!-- End #main -->
+      {% include './../util/footer.html' %}
+      {% endblock %}
+      {% include './../util/scripts.html' %}
+</body>
+</html>

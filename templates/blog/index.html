@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'util/header.html' %}
+    <title>{{title}}</title>
+</head>
+<body>
+    {% block content%}
+    {% include 'blog/blogNav.html' %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>Blogs</h2>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li>Blogs</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+    
+        <!-- BLOG CARDS -->
+        <div class="row mx-auto"style="padding: 0.5rem">
+        {% for blog in blogs %}
+        <div class="card" style="width: 18rem; margin: 10px 10px;">
+          <img class="card-img-top img-responsive" src="{{blog.pic.url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title text-center font-weight-bold">{{blog.title}}</h5>
+            <p class="card-text">{{blog.subtitle}}</p>
+            <a href="/blogs/{{blog.title}}" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <!-- BLOG CARD -->
+        {%endfor%}
+      </main><!-- End #main -->
+      {% include 'util/footer.html' %}
+      {% endblock %}
+      {% include 'util/scripts.html' %}
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'util/header.html' %}
+    <title>Blog | {{blog.title}}</title>
+    <link rel="stylesheet" href="{% static './css/blogpage.css' %}">
+</head>
+<body>
+    {% block content%}
+    {% include 'blog/blogNav.html' %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>Blogs</h2>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blogs/">Blog</a></li>
+                <li>{{blog.title}}</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- Main wrapper -->
+        <div class="main-wrapper" style="margin-left:0!important">
+	    
+            <article class="blog-post px-3 py-5 p-md-5">
+                <div class="container single-col-max-width">
+                    <header class="blog-post-header">
+                        <h2 class="title mb-2">{{blog.title}}</h2>
+                        <div class="meta mb-3"><span class="date">Published .... </span><span class="time">less than 20 min read</span></div>
+                    </header>
+                    
+                    <div class="blog-post-body">
+                        <figure class="blog-banner">
+                            <a><img class="img-fluid mx-auto" src="{{blog.pic.url}}" alt="image"></a>
+                            <figcaption class="mt-2 text-center image-caption">{{blog.subtitle}}</figcaption>
+                        </figure>
+                        <p>{{blog.text |linebreaks}}</p>
+                                           
+
+        
+        </div><!--//main-wrapper-->
+        <!-- End of main wrapper -->
+
+      </main><!-- End #main -->
+      {% include './../util/footer.html' %}
+      {% endblock %}
+      {% include './../util/scripts.html' %}
+</body>
+</html>
