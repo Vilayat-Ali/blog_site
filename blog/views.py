@@ -18,12 +18,12 @@ def specificBlog(request, blogname):
     for blog in blogs:
         if(blog.title == blogname):
             requiredBlog = blog
-            break
-    context = {
+            context = {
             "title": "Blogs",
             "keywords": "",
             "description": "",
             "blog": requiredBlog
             }
+            break
     return render(request, 'blog/specificblog.html', context)
 
