@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-d$r)t4%p9ze3*(4jgg)0@8-w)yz$s!^o!9n136a9j4!860#e0&
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'http://127.0.0.1/', 'https://vilayat.herokuapp.com']
 
 
 # Application definition

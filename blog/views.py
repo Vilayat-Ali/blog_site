@@ -16,17 +16,15 @@ def blogListView(request):
 
 def specificBlog(request, blogname):
     blogs = blogModel.objects.all()
-    for blog in blogs:
-        if(blog.title == blogname):
-            requiredBlog = blog
-            break
-        else:
-            HttpResponseRedirect("/")
-    context = {
-        "title": "Blogs",
-        "keywords": "",
-        "description": "",
-        "blog": requiredBlog
-    }
+    requiredBlog = blogModel.objects.get(title=blogname)
+    if(requiredBlog):
+        context = {
+            "title": "Blogs",
+            "keywords": "",
+            "description": "",
+            "blog": requiredBlog
+        }
+    else:
+        return HttpResponseRedirect("/")
     return render(request, 'blog/specificblog.html', context)
 
