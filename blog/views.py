@@ -16,11 +16,14 @@ def blogListView(request):
 
 def specificBlog(request, blogname):
     blogs = blogModel.objects.all()
-    requiredBlog = blogModel.objects.filter(title=blogname)
+    for blog in blogs:
+        if(blog.title==blogname):
+            requiredBlog = blog
+            break
     context = {
-            "title": "Blogs",
+            "title": blog.title,
             "keywords": "",
-            "description": "",
+            "description": blog.text,
             "blog": requiredBlog
         }
     return render(request, 'blog/specificblog.html', context)
