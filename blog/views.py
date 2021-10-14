@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .models import blogModel
 
 # Create your blog views here:
@@ -18,12 +19,14 @@ def specificBlog(request, blogname):
     for blog in blogs:
         if(blog.title == blogname):
             requiredBlog = blog
-            context = {
-            "title": "Blogs",
-            "keywords": "",
-            "description": "",
-            "blog": requiredBlog
-            }
             break
+        else:
+            HttpResponseRedirect("/")
+    context = {
+        "title": "Blogs",
+        "keywords": "",
+        "description": "",
+        "blog": requiredBlog
+    }
     return render(request, 'blog/specificblog.html', context)
 
