@@ -14,12 +14,12 @@ def blogListView(request):
     return render(request, 'blog/index.html', context)
 
 def specificBlog(request, blogname):
-    Post = blogModel.objects.all()
+    Post = blogModel.objects.all().filter(title=blogname)
     context = {
-            "title": Post.filter(title=blogname).title,
+            "title": Post,
             "keywords": "",
-            "description": Post.filter(title=blogname).text,
-            "blog": Post.filter(title=blogname)
+            "description": Post,
+            "blog": Post
         }
     return render(request, 'blog/specificblog.html', context)
 
