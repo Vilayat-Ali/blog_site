@@ -28,11 +28,11 @@
         <!-- BLOG CARDS -->
         <div class="row mx-auto"style="padding: 0.5rem">
         {% for project in projects %}
-        <div class="card" style="width: 25rem; margin: 10px 10px;">
+        <div class="card" style="width: 20rem; height: auto; margin: 10px 10px;">
           <img class="card-img-top img-responsive" src="{{project.pic.url}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-center font-weight-bold">{{project.title}}</h5>
-            <p class="card-text">{{project.description}}</p><br/>
+            <p class="card-text">{{project.description}}</p>
             <div class="d-flex flex-row">
             {% if project.github%}
             <p class="d-flex p-2"><a href="{{project.github}}"><i class='bx bxl-github' style="font-size: 45px"></i></a></p>
@@ -44,8 +44,8 @@
             {% else %}
             <p></p>
             {% endif %}
-          </div>
-            <a href="/projects/{{project.title}}/" class="btn btn-primary">Read More</a>
+          </div class="d-flex p-2">
+            <a href="/projects/{{project.title}}/" class="btn btn-primary ">Read More</a>
           </div>
         </div>
         <!-- BLOG CARD -->
