@@ -20,21 +20,38 @@ def home(request):
               }
     if(request.method == "POST"):
         thisContactForm = contactForm(request.POST)
-        print(request.POST)
         if(thisContactForm.is_valid()):
             # Form info
             info = {
                     "name": thisContactForm.cleaned_data["name"],
                     "email": thisContactForm.cleaned_data["email"],
                     "subject": thisContactForm.cleaned_data["subject"],
-                    "message": thisContactForm.cleaned_data["message"]
+                    "message": "From: "+thisContactForm.cleaned_data["name"]+"\n"+"Email: "+ thisContactForm.cleaned_data["email"]+"\n"+"\n"+"Message: "+"\n"+thisContactForm.cleaned_data["message"]
                    }
-            # Sending mail
+            # Sending mail to me
             send_mail(
                     info["subject"],
                     info["message"],
                     info["email"],
                     ['vilayatcodemysite@gmail.com'],
+                    fail_silently=False,
+                    )
+            # Sending mail to the sender
+            send_mail(
+                    "Thanks for contacting me!",
+                    """Hi!
+It's Syed Vilayat Ali Rizvi here!
+    Thankyou for visiting my website and contacting me. I have noted all your contcat information , which you can review down below:
+
+Name: {}
+Email: {}
+
+I will be contacting you as soon as I get free time! For reading my blogs fo
+Take care!
+
+Ba-Bye""".format(info["name"], info["email"]),
+                    "vilayatcodemysite@gmail.com",
+                    [info["email"]],
                     fail_silently=False,
                     )
         else:

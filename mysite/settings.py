@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import decouple
+from decouple import config
 import django_heroku
 import os
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,6 +89,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+import dj_database_url
+db = dj_database_url.config(conn_max_age=600)
+DATABASES["default"].update(db)
 
 
 # Password validation
@@ -128,10 +132,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_DIRS = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = "/img/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -142,10 +149,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = "vilayatcodemysite@gmail.com"
-EMAIL_HOST_PASSWORD = "ikshnqnbinqgelkg" #past the key or password app here
+EMAIL_HOST_PASSWORD = "geagbqsztbsxlywv" #past the key or password app here
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
