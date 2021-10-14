@@ -89,9 +89,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-import dj_database_url
-db = dj_database_url.config(conn_max_age=600)
-DATABASES["default"].update(db)
+# import dj_database_url
+# db = dj_database_url.config(conn_max_age=600)
+# DATABASES["default"].update(db)
 
 
 # Password validation

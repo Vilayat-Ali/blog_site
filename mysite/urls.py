@@ -9,7 +9,4 @@ urlpatterns = [
     path('', views.home, name="Home page"),
     path('blogs/', include('blog.urls'), name="Blog page"),
     path('projects/', include('project.urls'), name="Project")
-]
-# Static file servng when settings.Debug is false
-if settings.DEBUG:
-    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
