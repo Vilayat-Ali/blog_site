@@ -16,7 +16,7 @@ def blogListView(request):
 
 def specificBlog(request, blogname):
     blogs = blogModel.objects.all()
-    requiredBlog = blogModel.objects.get(title=blogname)
+    requiredBlog = blogModel.objects.filter(title=blogname).first()
     context = {
             "title": "Blogs",
             "keywords": "",
