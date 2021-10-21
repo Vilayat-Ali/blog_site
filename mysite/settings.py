@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d$r)t4%p9ze3*(4jgg)0@8-w)yz$s!^o!9n136a9j4!860#e0&'
+SECRET_KEY = 'd8b5e0e02f25d7a646325ad1e2ea82f8e83a7bdec9c8f840924c8f45f586aaea783b8c721e677154a346c6865066dfc1b02f681e95c86296eefeb35306bb63b5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,6 +45,15 @@ INSTALLED_APPS = [
     'project.apps.ProjectConfig',
     'blog.apps.BlogConfig',
 ]
+
+# Cloudinary settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dpaznlelv',
+    'API_KEY': '684215762242629',
+    'API_SECRET': '02g3Z2NI0cdTF6RODEBAuSZLPAQ',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,8 +146,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = "/img/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
